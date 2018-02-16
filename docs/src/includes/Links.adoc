@@ -1,0 +1,3 @@
+. link:https://www.lagomframework.com/#intro-to-lagom[Intro to Lagom Framework]
+. link:https://dzone.com/refcardz/reactive-microservices-with-lagom-and-java[Reactive Microservices With Lagom and Java]
+. link:https://www.youtube.com/watch?v=ofxbypDz4h8[Monolith to reactive - it's all about architecture]

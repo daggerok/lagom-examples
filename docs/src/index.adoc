@@ -1,0 +1,23 @@
+= Lagom examples {project-name} ({project-version}) image:https://travis-ci.org/daggerok/lagom-examples.svg?branch=master["Build Status", link={github_url}]
+Maksim Kostromin <daggerok@gmail.com>
+{docdatetime}
+:toc:
+:revnumber: {project-version}
+:example-caption!:
+:icons: font
+:toc: left
+:numbered:
+:github_url: https://github.com/daggerok/lagom-examples
+:github_branch_prefix: {github_url}/tree
+
+[discrete]
+== Introduction
+include::includes/Introduction.adoc[]
+
+//== Some Title
+//include::../../some-project/README.adoc[tags=content]
+
+== links
+include::includes/Links.adoc[]
+
+== Enjoy! :)

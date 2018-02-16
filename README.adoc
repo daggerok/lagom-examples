@@ -1,0 +1,5 @@
+= lagom-examples
+
+//tag::content[]
+
+//end::content[]
