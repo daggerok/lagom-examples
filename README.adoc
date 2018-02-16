@@ -1,4 +1,4 @@
-= lagom-examples
+= lagom-examples image:https://travis-ci.org/daggerok/lagom-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/lagom-examples"]
 
 //tag::content[]
 
