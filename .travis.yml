@@ -33,7 +33,9 @@ script:
 - cd $root/akka-quickstart-scala/
 - ./sbt compile
 
-before_deploy: ./gradlew documentation
+before_deploy:
+- cd $root/
+- ./gradlew documentation
 
 env:
   global:
