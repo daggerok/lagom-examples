@@ -1,2 +1,3 @@
-rootProject.name = "lagom-examples"
-include "docs"
+rootProject.name = 'lightbend-examples'
+enableFeaturePreview 'STABLE_PUBLISHING'
+include 'docs'
