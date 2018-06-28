@@ -33,7 +33,7 @@ include::../README.adoc[tags=content]
 
 == Implementation
 
-TODO: implement documentation...
+TODO
 
 == Links
 
