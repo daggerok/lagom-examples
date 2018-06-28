@@ -33,7 +33,16 @@ include::../README.adoc[tags=content]
 
 == Implementation
 
-TODO
+=== akka-quickstart-scala
+
+.fetch quickstart project
+----
+wget -qO app.zip "https://example.lightbend.com/v1/download/akka-quickstart-scala?name=akka-quickstart-scala"
+
+unzip app.zip -d .
+cd akka-quickstart-scala/
+./sbt compile
+----
 
 == Links
 

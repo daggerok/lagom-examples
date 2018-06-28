@@ -8,24 +8,30 @@ addons:
   apt:
     update: true
     packages:
-    - sudo
-    - lsof
     - bash
     - unzip
-    - curl
-    - jq
-    - libxml2-utils
-    - docker-ce
-    - python-pip
-
-install: true
+    - wget
+#    - sudo
+#    - lsof
+#    - curl
+#    - jq
+#    - libxml2-utils
+#    - docker-ce
+#    - python-pip
+#
+#install: true
 #before_script:
 #- sudo pip install docker-compose httpie >/dev/null 2>&1
 #- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+
+script:
+- export root=$(pwd)
 #
-#script:
-#- bash mvnw
-#- bash gradlew
+- wget -qO app.zip
+  "https://example.lightbend.com/v1/download/akka-quickstart-scala?name=akka-quickstart-scala"
+- unzip app.zip -d .
+- cd $root/akka-quickstart-scala/
+- ./sbt compile
 
 before_deploy: ./gradlew documentation
 
