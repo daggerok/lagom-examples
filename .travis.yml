@@ -1,41 +1,70 @@
-service:
-- docker
+notifications:
+  email: false
 
 language: java
-jdk: oraclejdk8
+jdk:
+- oraclejdk8
+#- oraclejdk10
+
+service:
+- docker
 
 addons:
   apt:
     update: true
+    sources:
+    - google-chrome
     packages:
+    - google-chrome-stable
+    - libappindicator1
+    - fonts-liberation
     - bash
-    - unzip
-    - wget
-#    - sudo
-#    - lsof
-#    - curl
-#    - jq
-#    - libxml2-utils
-#    - docker-ce
-#    - python-pip
+    - curl
+    - libxml2-utils
+    - docker-ce
+
+install: true
+before_install:
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 #
-#install: true
-#before_script:
-#- sudo pip install docker-compose httpie >/dev/null 2>&1
-#- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+- sudo add-apt-repository universe -y >/dev/null
+- echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list >/dev/null
+- sudo apt-get update -yqq >/dev/null
+- sudo apt-get install -yqq --no-install-suggests --no-install-recommends
+  tree jq python-pip curl bash sudo >/dev/null
+#
+- sudo pip install docker-compose httpie >/dev/null 2>&1
+#
+- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+- stop_any 8080 3000 80 >/dev/null
+#
+- curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - >/dev/null
+- echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list >/dev/null
+- sudo apt-get update -yqq >/dev/null
+- sudo apt-get install -yqq --no-install-suggests --no-install-recommends yarn >/dev/null
 
 script:
 - export root=$(pwd)
-#
-- wget -qO app.zip
-  "https://example.lightbend.com/v1/download/akka-quickstart-scala?name=akka-quickstart-scala"
-- unzip app.zip -d .
-- cd $root/akka-quickstart-scala/
-- ./sbt compile
+- bash mvnw
 
 before_deploy:
-- cd $root/
-- ./gradlew documentation
+- cd ${root}
+- ./mvnw -Pdocs
+- mkdir -p ./target/generated-docs
+- cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html
+
+before_cache:
+- for item in $(find ~/.gradle -name "*.lock");
+  do sudo rm -rf $item ;
+  done
+
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.gradle
+  - $HOME/.docker
 
 env:
   global:
@@ -45,21 +74,9 @@ env:
 deploy:
   provider: pages
   skip-cleanup: true
-  # travis encrypt GITHUB_TOKEN=<your github repo token> --add
   github-token: "$GITHUB_TOKEN"
   keep-history: true
   on:
     branch: master
   local-dir: target/generated-docs
   target_branch: gh-pages
-
-before_cache:
-- sudo rm -rf $HOME/.gradle/caches/*/fileHashes/fileHashes.bin
-- sudo rm -rf $HOME/.gradle/caches/*/fileHashes/fileHashes.lock
-- sudo rm -rf $HOME/.gradle/caches/modules-2/modules-2.lock
-
-cache:
-  directories:
-  - $HOME/.m2
-  - $HOME/.gradle
-  - $HOME/.docker
