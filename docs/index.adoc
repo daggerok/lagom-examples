@@ -1,16 +1,10 @@
 = {root-project-name} ({project-version})
-////
-image:https://travis-ci.org/daggerok/root-project-name.svg?branch=master["Build Status", link=github-url]
-image:https://gitlab.com/daggerok/root-project-name/badges/master/build.svg["Build Status", link=gitlab-url]
-image:https://img.shields.io/bitbucket/pipelines/daggerok/root-project-name.svg["Build Status", link=bitbucket-url]
-////
 Maksim Kostromin <daggerok@gmail.com>
 {docdatetime}
 :doctype: book
 :toc: left
 :toclevels: 4
 :source-highlighter: prettify
-:numbered:
 :icons: font
 :hide-uri-scheme:
 :revnumber: {project-version}
@@ -19,19 +13,15 @@ Maksim Kostromin <daggerok@gmail.com>
 Travis CI status:
 image:https://travis-ci.org/daggerok/{root-project-name}.svg?branch=master["Build Status", link={github-url}]
 
-////
-GitLab CI status:
-image:https://gitlab.com/daggerok/{root-project-name}/badges/master/build.svg["Build Status", link={gitlab-url}]
-
-BitBucket CI status:
-image:https://img.shields.io/bitbucket/pipelines/daggerok/{root-project-name}.svg["Build Status", link={bitbucket-url}]
-////
-
 == Introduction
 
 include::../README.adoc[tags=content]
 
 == Implementation
+
+=== prepare environment
+
+To avoid some JDK8 Cassandra issue, please use java version 1.8.0_152
 
 === akka-quickstart-scala
 
@@ -46,18 +36,18 @@ cd akka-quickstart-scala/
 
 == Links
 
-ifdef::backend-html5[- link:./index.pdf[Documentation in PFD format]]
-- link:{github-url}[GitHub repo]
-- link:https://daggerok.github.io/{root-project-name}[GitHub pages]
-////
-- link:{gitlab-url}[GitLab repo]
-- link:https://daggerok.gitlab.io/{root-project-name}[GitLab pages]
-- link:{bitbucket-url}[BitBucket repo]
-////
-
-== Other links
-
+- link:https://www.youtube.com/watch?v=d1jT0UOVx9U[YouTube: Meet Lagom (Lagom promo)]
+- link:https://www.youtube.com/watch?v=1cOqYMe-Zm0[YouTube: Setup development environment]
+- link:https://www.youtube.com/watch?v=D9y2Ex3NN34[YouTube: Lagom Services]
+- link:https://www.youtube.com/watch?v=yj581pSRflQ[YouTube: Managing Data Persistence]
+- link:https://www.youtube.com/watch?v=0Z0UIZxW1aw[YouTube: Lagom Deployment to ConductR]
+- link:https://www.youtube.com/watch?v=ofxbypDz4h8[YouTube: Monolith to reactive - it's all about architecture]
 - link:https://developer.lightbend.com/start/[Lightbend getting started]
 - link:https://www.lagomframework.com/#intro-to-lagom[Intro to Lagom Framework]
 - link:https://dzone.com/refcardz/reactive-microservices-with-lagom-and-java[Reactive Microservices With Lagom and Java]
-- link:https://www.youtube.com/watch?v=ofxbypDz4h8[Monolith to reactive - it's all about architecture]
+
+---
+
+ifdef::backend-html5[- link:./index.pdf[Documentation in PFD format]]
+- link:{github-url}[GitHub repo]
+- link:https://daggerok.github.io/{root-project-name}[GitHub pages]
