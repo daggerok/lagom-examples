@@ -35,7 +35,6 @@ cd akka-quickstart-scala/
 ----
 
 == Links
-
 - link:https://www.youtube.com/watch?v=d1jT0UOVx9U[YouTube: Meet Lagom (Lagom promo)]
 - link:https://www.youtube.com/watch?v=1cOqYMe-Zm0[YouTube: Setup development environment]
 - link:https://www.youtube.com/watch?v=D9y2Ex3NN34[YouTube: Lagom Services]
@@ -47,7 +46,9 @@ cd akka-quickstart-scala/
 - link:https://dzone.com/refcardz/reactive-microservices-with-lagom-and-java[Reactive Microservices With Lagom and Java]
 
 ---
+- link:https://github.com/lagom/lagom-recipes[GitHub: lagom/lagom-recipes]
 
+---
 ifdef::backend-html5[- link:./index.pdf[Documentation in PFD format]]
 - link:{github-url}[GitHub repo]
 - link:https://daggerok.github.io/{root-project-name}[GitHub pages]
