@@ -5,12 +5,50 @@
 
   <parent>
     <groupId>com.github.daggerok</groupId>
-    <artifactId>lagom-maven</artifactId>
+    <artifactId>lagom-maven-1.2.0</artifactId>
     <version>0.0.1</version>
   </parent>
 
-  <artifactId>cassandra-config</artifactId>
+  <artifactId>hello-impl</artifactId>
   <packaging>jar</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>hello-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.lightbend.lagom</groupId>
+      <artifactId>lagom-javadsl-server_2.11</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.lightbend.lagom</groupId>
+      <artifactId>lagom-javadsl-persistence-cassandra_2.11</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.lightbend.lagom</groupId>
+      <artifactId>lagom-logback_2.11</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.typesafe.play</groupId>
+      <artifactId>play-netty-server_2.11</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.lightbend.lagom</groupId>
+      <artifactId>lagom-javadsl-testkit_2.11</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.typesafe.conductr</groupId>
+      <artifactId>${conductr.lib.name}</artifactId>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
@@ -36,6 +74,9 @@
       <plugin>
         <groupId>com.lightbend.lagom</groupId>
         <artifactId>lagom-maven-plugin</artifactId>
+        <configuration>
+          <lagomService>true</lagomService>
+        </configuration>
         <executions>
           <execution>
             <goals>

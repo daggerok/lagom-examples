@@ -1,16 +1,14 @@
-/*
- * Copyright (C) 2016 Lightbend Inc. <http://www.lightbend.com>
- */
 package daggerok.hello.impl;
-
-import akka.Done;
-import com.lightbend.lagom.javadsl.persistence.PersistentEntity;
-import daggerok.hello.impl.HelloCommand.Hello;
-import daggerok.hello.impl.HelloCommand.UseGreetingMessage;
-import daggerok.hello.impl.HelloEvent.GreetingMessageChanged;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+
+import com.lightbend.lagom.javadsl.persistence.PersistentEntity;
+
+import akka.Done;
+import daggerok.hello.impl.HelloCommand.Hello;
+import daggerok.hello.impl.HelloCommand.UseGreetingMessage;
+import daggerok.hello.impl.HelloEvent.GreetingMessageChanged;
 
 /**
  * This is an event sourced entity. It has a state, {@link HelloState}, which
@@ -56,28 +54,28 @@ public class HelloEntity extends PersistentEntity<HelloCommand, HelloEvent, Hell
      * Command handler for the UseGreetingMessage command.
      */
     b.setCommandHandler(UseGreetingMessage.class, (cmd, ctx) ->
-        // In response to this command, we want to first persist it as a
-        // GreetingMessageChanged event
-        ctx.thenPersist(new GreetingMessageChanged(cmd.message),
-                        // Then once the event is successfully persisted, we respond with done.
-                        evt -> ctx.reply(Done.getInstance())));
+    // In response to this command, we want to first persist it as a
+    // GreetingMessageChanged event
+    ctx.thenPersist(new GreetingMessageChanged(entityId(), cmd.message),
+        // Then once the event is successfully persisted, we respond with done.
+        evt -> ctx.reply(Done.getInstance())));
 
     /*
      * Event handler for the GreetingMessageChanged event.
      */
     b.setEventHandler(GreetingMessageChanged.class,
-                      // We simply update the current state to use the greeting message from
-                      // the event.
-                      evt -> new HelloState(evt.message, LocalDateTime.now().toString()));
+        // We simply update the current state to use the greeting message from
+        // the event.
+        evt -> new HelloState(evt.message, LocalDateTime.now().toString()));
 
     /*
      * Command handler for the Hello command.
      */
     b.setReadOnlyCommandHandler(Hello.class,
-                                // Get the greeting from the current state, and prepend it to the name
-                                // that we're sending
-                                // a greeting to, and reply with that message.
-                                (cmd, ctx) -> ctx.reply(state().message + ", " + cmd.name + "!"));
+        // Get the greeting from the current state, and prepend it to the name
+        // that we're sending
+        // a greeting to, and reply with that message.
+        (cmd, ctx) -> ctx.reply(state().message + ", " + cmd.name + "!"));
 
     /*
      * We've defined all our behaviour, so build and return it.

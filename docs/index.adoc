@@ -27,6 +27,10 @@ include::../README.adoc[tags=content]
 
 To avoid some JDK8 Cassandra issue, please use java version 1.8.0_152
 
+=== lagom-maven-1.2.0
+
+include::../lagom-maven-1.2.0/README.adoc[tags=content]
+
 === lagom-maven
 
 include::../lagom-maven/README.adoc[tags=content]

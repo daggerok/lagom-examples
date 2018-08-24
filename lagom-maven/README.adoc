@@ -5,7 +5,7 @@
 [source,bash]
 ----
 mvn archetype:generate -DarchetypeGroupId=com.lightbend.lagom \
-  -DarchetypeArtifactId=maven-archetype-lagom-java -DarchetypeVersion=1.2.0
+  -DarchetypeArtifactId=maven-archetype-lagom-java -DarchetypeVersion=1.4.7
 
 # answer a questions...
 
@@ -20,7 +20,3 @@ mvn -N io.takari:maven:wrapper
 ----
 
 //end::content[]
-
-links:
-
-- link:https://www.lagomframework.com/documentation/1.2.x/java/GettingStartedMaven.html[getting started guide]

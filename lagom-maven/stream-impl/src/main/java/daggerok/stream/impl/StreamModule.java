@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2016 Lightbend Inc. <http://www.lightbend.com>
- */
 package daggerok.stream.impl;
 
 import com.google.inject.AbstractModule;
@@ -15,8 +12,10 @@ public class StreamModule extends AbstractModule implements ServiceGuiceSupport 
   @Override
   protected void configure() {
     // Bind the StreamService service
-    bindServices(serviceBinding(StreamService.class, StreamServiceImpl.class));
+    bindService(StreamService.class, StreamServiceImpl.class);
     // Bind the HelloService client
     bindClient(HelloService.class);
+    // Bind the subscriber eagerly to ensure it starts up
+    bind(StreamSubscriber.class).asEagerSingleton();
   }
 }

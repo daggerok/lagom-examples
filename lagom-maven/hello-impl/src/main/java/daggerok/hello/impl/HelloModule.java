@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2016 Lightbend Inc. <http://www.lightbend.com>
- */
 package daggerok.hello.impl;
 
 import com.google.inject.AbstractModule;
@@ -13,6 +10,6 @@ import daggerok.hello.api.HelloService;
 public class HelloModule extends AbstractModule implements ServiceGuiceSupport {
   @Override
   protected void configure() {
-    bindServices(serviceBinding(HelloService.class, HelloServiceImpl.class));
+    bindService(HelloService.class, HelloServiceImpl.class);
   }
 }

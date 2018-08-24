@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2016 Lightbend Inc. <http://www.lightbend.com>
- */
 package daggerok.stream.impl;
 
 import akka.NotUsed;
@@ -19,15 +16,26 @@ import static java.util.concurrent.CompletableFuture.completedFuture;
 public class StreamServiceImpl implements StreamService {
 
   private final HelloService helloService;
+  private final StreamRepository repository;
 
   @Inject
-  public StreamServiceImpl(HelloService helloService) {
+  public StreamServiceImpl(HelloService helloService, StreamRepository repository) {
     this.helloService = helloService;
+    this.repository = repository;
   }
 
   @Override
-  public ServiceCall<Source<String, NotUsed>, Source<String, NotUsed>> stream() {
+  public ServiceCall<Source<String, NotUsed>, Source<String, NotUsed>> directStream() {
     return hellos -> completedFuture(
-        hellos.mapAsync(8, name -> helloService.hello(name).invoke()));
+      hellos.mapAsync(8, name ->  helloService.hello(name).invoke()));
+  }
+
+  @Override
+  public ServiceCall<Source<String, NotUsed>, Source<String, NotUsed>> autonomousStream() {
+    return hellos -> completedFuture(
+        hellos.mapAsync(8, name -> repository.getMessage(name).thenApply( message ->
+            String.format("%s, %s!", message.orElse("Hello"), name)
+        ))
+    );
   }
 }
