@@ -3,11 +3,7 @@
  */
 package daggerok.hello.impl;
 
-import java.util.Optional;
-
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
-
+import akka.Done;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
@@ -16,11 +12,13 @@ import com.lightbend.lagom.javadsl.persistence.PersistentEntity;
 import com.lightbend.lagom.serialization.CompressedJsonable;
 import com.lightbend.lagom.serialization.Jsonable;
 
-import akka.Done;
+import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
+import java.util.Optional;
 
 /**
  * This interface defines all the commands that the Hello entity supports.
- * 
+ * <p>
  * By convention, the commands should be inner classes of the interface, which
  * makes it simple to get a complete picture of what commands an entity
  * supports.

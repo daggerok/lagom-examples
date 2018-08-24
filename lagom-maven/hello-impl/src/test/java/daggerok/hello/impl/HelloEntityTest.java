@@ -1,23 +1,21 @@
 package daggerok.hello.impl;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Collections;
-import java.util.Optional;
-
+import akka.Done;
+import akka.actor.ActorSystem;
+import akka.testkit.JavaTestKit;
+import com.lightbend.lagom.javadsl.testkit.PersistentEntityTestDriver;
+import com.lightbend.lagom.javadsl.testkit.PersistentEntityTestDriver.Outcome;
+import daggerok.hello.impl.HelloCommand.Hello;
+import daggerok.hello.impl.HelloCommand.UseGreetingMessage;
+import daggerok.hello.impl.HelloEvent.GreetingMessageChanged;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.lightbend.lagom.javadsl.testkit.PersistentEntityTestDriver;
-import com.lightbend.lagom.javadsl.testkit.PersistentEntityTestDriver.Outcome;
+import java.util.Collections;
+import java.util.Optional;
 
-import akka.Done;
-import akka.actor.ActorSystem;
-import akka.testkit.JavaTestKit;
-import daggerok.hello.impl.HelloCommand.Hello;
-import daggerok.hello.impl.HelloCommand.UseGreetingMessage;
-import daggerok.hello.impl.HelloEvent.GreetingMessageChanged;
+import static org.junit.Assert.assertEquals;
 
 public class HelloEntityTest {
 
@@ -37,14 +35,15 @@ public class HelloEntityTest {
   @Test
   public void testHelloWorld() {
     PersistentEntityTestDriver<HelloCommand, HelloEvent, HelloState> driver = new PersistentEntityTestDriver<>(system,
-        new HelloEntity(), "world-1");
+                                                                                                               new HelloEntity(),
+                                                                                                               "world-1");
 
     Outcome<HelloEvent, HelloState> outcome1 = driver.run(new Hello("Alice", Optional.empty()));
     assertEquals("Hello, Alice!", outcome1.getReplies().get(0));
     assertEquals(Collections.emptyList(), outcome1.issues());
 
     Outcome<HelloEvent, HelloState> outcome2 = driver.run(new UseGreetingMessage("Hi"),
-        new Hello("Bob", Optional.empty()));
+                                                          new Hello("Bob", Optional.empty()));
     assertEquals(1, outcome2.events().size());
     assertEquals(new GreetingMessageChanged("Hi"), outcome2.events().get(0));
     assertEquals("Hi", outcome2.state().message);

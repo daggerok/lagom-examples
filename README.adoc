@@ -2,10 +2,14 @@
 
 //tag::content[]
 
-This repo contains some hints and examples for development with lightbend:
-akka, play, scala, lagom
+in progress...
 
-TODO: in progress...
+This repo contains some hints and examples for development with lightbend:
+
+- akka
+- play
+- scala
+- lagom
 
 Project link:https://daggerok.github.io/lightbend-examples[reference documentation]
 

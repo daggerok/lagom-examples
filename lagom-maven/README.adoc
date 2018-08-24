@@ -1,0 +1,26 @@
+= lagom-maven
+
+//tag::content[]
+
+[source,bash]
+----
+mvn archetype:generate -DarchetypeGroupId=com.lightbend.lagom \
+  -DarchetypeArtifactId=maven-archetype-lagom-java -DarchetypeVersion=1.2.0
+
+# answer a questions...
+
+cd lagom-mavemn/
+mvn -N io.takari:maven:wrapper
+
+./mvnw clean package
+
+./mvnw lagom:runAll
+
+- http :9000/api/hello/Maksimko
+----
+
+//end::content[]
+
+links:
+
+- link:https://www.lagomframework.com/documentation/1.2.x/java/GettingStartedMaven.html[getting started guide]

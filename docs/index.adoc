@@ -27,6 +27,10 @@ include::../README.adoc[tags=content]
 
 To avoid some JDK8 Cassandra issue, please use java version 1.8.0_152
 
+=== lagom-maven
+
+include::../lagom-maven/README.adoc[tags=content]
+
 === akka-quickstart-scala
 
 .fetch quickstart project
@@ -39,6 +43,7 @@ cd akka-quickstart-scala/
 ----
 
 == Links
+
 - link:https://www.youtube.com/watch?v=d1jT0UOVx9U[YouTube: Meet Lagom (Lagom promo)]
 - link:https://www.youtube.com/watch?v=1cOqYMe-Zm0[YouTube: Setup development environment]
 - link:https://www.youtube.com/watch?v=D9y2Ex3NN34[YouTube: Lagom Services]
@@ -51,6 +56,7 @@ cd akka-quickstart-scala/
 
 ---
 - link:https://github.com/lagom/lagom-recipes[GitHub: lagom/lagom-recipes]
+- link:https://www.lagomframework.com/documentation/1.2.x/java/GettingStartedMaven.html[Getting started lagom mavemn guide]
 
 ---
 ifdef::backend-html5[- link:./index.pdf[Documentation in PFD format]]

@@ -3,16 +3,14 @@
  */
 package daggerok.hello.impl;
 
+import daggerok.hello.api.GreetingMessage;
+import daggerok.hello.api.HelloService;
+import org.junit.Test;
+
 import static com.lightbend.lagom.javadsl.testkit.ServiceTest.defaultSetup;
 import static com.lightbend.lagom.javadsl.testkit.ServiceTest.withServer;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-import akka.NotUsed;
-import daggerok.hello.api.GreetingMessage;
-import daggerok.hello.api.HelloService;
 
 public class HelloServiceTest {
 

@@ -24,9 +24,11 @@
     <vavr.version>0.9.2</vavr.version>
   </properties>
 
+  <!--
   <modules>
     <module>lagom-maven</module>
   </modules>
+  -->
 
   <build>
     <plugins>

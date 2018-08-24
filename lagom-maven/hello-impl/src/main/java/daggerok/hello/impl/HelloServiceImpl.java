@@ -8,14 +8,12 @@ import akka.NotUsed;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
 import com.lightbend.lagom.javadsl.persistence.PersistentEntityRef;
 import com.lightbend.lagom.javadsl.persistence.PersistentEntityRegistry;
-
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-
-import javax.inject.Inject;
 import daggerok.hello.api.GreetingMessage;
 import daggerok.hello.api.HelloService;
 import daggerok.hello.impl.HelloCommand.*;
+
+import javax.inject.Inject;
+import java.util.Optional;
 
 /**
  * Implementation of the HelloService.
