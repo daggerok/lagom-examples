@@ -2,10 +2,11 @@ notifications:
   email: false
 
 language: java
-jdk:
-- oraclejdk8
+jdk: openjdk8
+#- oraclejdk8
 #- oraclejdk10
 
+sudo: required
 service:
 - docker
 
@@ -54,10 +55,17 @@ script:
 - (./mvnw lagom:runAll || true) &
 - wait_for 4000 8000 9000
 - sleep 15
-- http :9000/api/hello/Maksimko\!\!
+- stop_any 9000 8000 4000
+- killall -9 java || true
+- sudo killall -9 java || true
+- (./mvnw lagom:runAll || true) &
+- wait_for 4000 8000 9000
+- sleep 15
+- http :9000/api/hello/Maksimko\!\! || true
 - sleep 1
 - stop_any 9000 8000 4000
 - killall -9 java || true
+- sudo killall -9 java || true
 #
 - cd ${root}/lagom-maven
 - ./mvnw
