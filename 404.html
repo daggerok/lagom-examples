@@ -463,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <span id="author" class="author">Maksim Kostromin</span><br>
 <span id="email" class="email"><a href="mailto:daggerok@gmail.com">daggerok@gmail.com</a></span><br>
 <span id="revnumber">version 0.0.1,</span>
-<span id="revdate">2018-08-24 15:37:59 UTC</span>
+<span id="revdate">2018-09-04 11:42:42 UTC</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -472,8 +472,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#implementation">2. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#prepare-environment">2.1. prepare environment</a></li>
-<li><a href="#lagom-maven">2.2. lagom-maven</a></li>
-<li><a href="#lagom-maven-2">2.3. lagom-maven</a></li>
+<li><a href="#lagom-maven-1-2-0">2.2. lagom-maven-1.2.0</a></li>
+<li><a href="#lagom-maven">2.3. lagom-maven</a></li>
 <li><a href="#akka-quickstart-scala">2.4. akka-quickstart-scala</a></li>
 </ul>
 </li>
@@ -525,11 +525,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="lagom-maven"><a class="anchor" href="#lagom-maven"></a>2.2. lagom-maven</h3>
-
-</div>
-<div class="sect2">
-<h3 id="lagom-maven-2"><a class="anchor" href="#lagom-maven-2"></a>2.3. lagom-maven</h3>
+<h3 id="lagom-maven-1-2-0"><a class="anchor" href="#lagom-maven-1-2-0"></a>2.2. lagom-maven-1.2.0</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn archetype:generate -DarchetypeGroupId=com.lightbend.lagom \
@@ -537,21 +533,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 
 # answer a questions...
 
+cd lagom-mavemn-1.2.0/
+mvn -N io.takari:maven:wrapper
+
+./mvnw clean package
+
+./mvnw lagom:runAll
+
+- http :9000/api/hello/Maksimko</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lagom-maven"><a class="anchor" href="#lagom-maven"></a>2.3. lagom-maven</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn archetype:generate -DarchetypeGroupId=com.lightbend.lagom \
+  -DarchetypeArtifactId=maven-archetype-lagom-java -DarchetypeVersion=1.4.7
+
+# answer a questions...
+
 cd lagom-mavemn/
 mvn -N io.takari:maven:wrapper
 
-./mvnw clean package</code></pre>
+./mvnw clean package
+
+./mvnw lagom:runAll
+
+- http :9000/api/hello/Maksimko</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>links:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.lagomframework.com/documentation/1.2.x/java/GettingStartedMaven.html">getting started guide</a></p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
@@ -609,6 +619,9 @@ cd akka-quickstart-scala/
 <li>
 <p><a href="https://github.com/lagom/lagom-recipes">GitHub: lagom/lagom-recipes</a></p>
 </li>
+<li>
+<p><a href="https://www.lagomframework.com/documentation/1.2.x/java/GettingStartedMaven.html">Getting started lagom mavemn guide</a></p>
+</li>
 </ul>
 </div>
 <hr>
@@ -631,7 +644,7 @@ cd akka-quickstart-scala/
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1<br>
-Last updated 2018-08-24 15:37:59 UTC
+Last updated 2018-09-04 11:42:42 UTC
 </div>
 </div>
 <!-- jquery -->

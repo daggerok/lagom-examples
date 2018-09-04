@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>lightbend-examples (0.0.1)</title>
-<date>2018-08-24 15:37:59 UTC</date>
+<date>2018-09-04 11:42:42 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -16,7 +16,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2018-08-24 15:37:59 UTC</date>
+<date>2018-09-04 11:42:42 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -48,27 +48,37 @@
 <title>prepare environment</title>
 <simpara>To avoid some JDK8 Cassandra issue, please use java version 1.8.0_152</simpara>
 </section>
-<section xml:id="lagom-maven">
-<title>lagom-maven</title>
-
-</section>
-<section xml:id="lagom-maven-2">
-<title>lagom-maven</title>
+<section xml:id="lagom-maven-1-2-0">
+<title>lagom-maven-1.2.0</title>
 <programlisting language="bash" linenumbering="unnumbered">mvn archetype:generate -DarchetypeGroupId=com.lightbend.lagom \
   -DarchetypeArtifactId=maven-archetype-lagom-java -DarchetypeVersion=1.2.0
+
+# answer a questions...
+
+cd lagom-mavemn-1.2.0/
+mvn -N io.takari:maven:wrapper
+
+./mvnw clean package
+
+./mvnw lagom:runAll
+
+- http :9000/api/hello/Maksimko</programlisting>
+</section>
+<section xml:id="lagom-maven">
+<title>lagom-maven</title>
+<programlisting language="bash" linenumbering="unnumbered">mvn archetype:generate -DarchetypeGroupId=com.lightbend.lagom \
+  -DarchetypeArtifactId=maven-archetype-lagom-java -DarchetypeVersion=1.4.7
 
 # answer a questions...
 
 cd lagom-mavemn/
 mvn -N io.takari:maven:wrapper
 
-./mvnw clean package</programlisting>
-<simpara>links:</simpara>
-<itemizedlist>
-<listitem>
-<simpara><link xl:href="https://www.lagomframework.com/documentation/1.2.x/java/GettingStartedMaven.html">getting started guide</link></simpara>
-</listitem>
-</itemizedlist>
+./mvnw clean package
+
+./mvnw lagom:runAll
+
+- http :9000/api/hello/Maksimko</programlisting>
 </section>
 <section xml:id="akka-quickstart-scala">
 <title>akka-quickstart-scala</title>
@@ -119,6 +129,9 @@ cd akka-quickstart-scala/
 <itemizedlist>
 <listitem>
 <simpara><link xl:href="https://github.com/lagom/lagom-recipes">GitHub: lagom/lagom-recipes</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.lagomframework.com/documentation/1.2.x/java/GettingStartedMaven.html">Getting started lagom mavemn guide</link></simpara>
 </listitem>
 </itemizedlist>
 <simpara><?asciidoc-hr?></simpara>
